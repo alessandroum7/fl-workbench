@@ -6,6 +6,9 @@
         "build": "vite build",
         "dev": "vite"
     },
+    "imports": {
+        "@/*": "./resources/js/*"
+    },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
         "concurrently": "^10.0.3",
