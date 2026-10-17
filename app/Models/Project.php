@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Project extends Model
 {
+    /** @use HasFactory<\Database\Factories\ProjectFactory> */
     use HasFactory;
 
     protected $fillable = [
@@ -27,7 +28,7 @@ class Project extends Model
         'build_config' => 'array',
         'is_published' => 'boolean',
     ];
-
+    /** @return BelongsTo<User, $this> */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -37,7 +38,7 @@ class Project extends Model
     {
         return $this->belongsTo(Project::class, 'source_project_id');
     }
-
+    /** @return HasMany<ProjectFile, $this> */
     public function files(): HasMany
     {
         return $this->hasMany(ProjectFile::class);
