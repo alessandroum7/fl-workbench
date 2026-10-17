@@ -18,7 +18,7 @@ class ProjectFile extends Model
         'name',
         'content',
     ];
-
+    /** @phpstan-return Attribute<string, string|null> */
     protected function content(): Attribute
     {
         return Attribute::make(get: fn (?string $value) => $value ?? '');

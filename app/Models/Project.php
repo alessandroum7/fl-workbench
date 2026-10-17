@@ -35,7 +35,7 @@ class Project extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+    /** @phpstan-return BelongsTo<Project, $this> */
     public function sourceProject(): BelongsTo
     {
         return $this->belongsTo(Project::class, 'source_project_id');
