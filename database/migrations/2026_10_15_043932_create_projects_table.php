@@ -35,6 +35,8 @@ return new class extends Migration
 
             //indice para optimizar la busqueda en el catalogo
             $table->index(['type', 'is_published']);
+
+            $table->unique(['user_id', 'name']); //un usuario no puede tener dos proyectos con el mismo nombre
         });
     }
 
