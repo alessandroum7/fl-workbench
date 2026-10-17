@@ -4,6 +4,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 class ProjectFile extends Model
 {
     use HasFactory;
@@ -14,6 +15,10 @@ class ProjectFile extends Model
         'content',
     ];
 
+    protected function content(): Attribute
+    {
+        return Attribute::make(get:fn (?string $value) => $value ?? '');
+    }
     public function project(): BelongsTo {
         return $this->belongsTo(Project::class);
     }

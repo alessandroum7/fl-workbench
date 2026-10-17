@@ -25,13 +25,13 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // Usamos firstOrCreate (nativo de Eloquent) pasando un array
         foreach ($permisos as $p) {
-            Permission::firstOrCreate(['name' => $p]);
+            Permission::firstOrCreate(['name' => $p, 'guard_name' => 'web']);
         }
 
-        $rolEstudiante = Role::firstOrCreate(['name' => 'estudiante']);
+        $rolEstudiante = Role::firstOrCreate(['name' => 'estudiante', 'guard_name' => 'web']);
         $rolEstudiante->syncPermissions(['guardar proyectos']);
 
-        $rolDocente = Role::firstOrCreate(['name' => 'docente']);
+        $rolDocente = Role::firstOrCreate(['name' => 'docente', 'guard_name' => 'web']);
         $rolDocente->syncPermissions([
             'guardar proyectos',
             'gestionar proyectos de ejemplo',
@@ -39,7 +39,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'publicar recursos',
         ]);
 
-        $rolAdmin = Role::firstOrCreate(['name' => 'admin']);
+        $rolAdmin = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
         $rolAdmin->syncPermissions(Permission::all());
     }
 }
