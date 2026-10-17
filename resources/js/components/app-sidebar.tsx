@@ -15,12 +15,17 @@ import {
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
 import type { NavItem } from '@/types';
-
+import { FolderOpen } from 'lucide-react';
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
+    },
+    {
+        title: 'Mis Proyectos',
+        href: '/projects',
+        icon: FolderOpen,
     },
 ];
 
