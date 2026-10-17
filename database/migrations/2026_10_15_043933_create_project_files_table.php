@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('project_id')->constrained()->cascadeOnDelete();
             $table->string('name', 100);
-            $table->longText('content')->nullable(); //guardamos el codigo en base de datos
+            $table->longText('content')->nullable(); // guardamos el codigo en base de datos
             $table->timestamps();
 
-            //RESTRICCION CLAVE: no pueden haber 2 archivos con el mismo nombre en un proyecto
+            // RESTRICCION CLAVE: no pueden haber 2 archivos con el mismo nombre en un proyecto
             $table->unique(['project_id', 'name']);
         });
     }
