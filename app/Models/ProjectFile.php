@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\ProjectFileFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProjectFile extends Model
 {
-    /** @use HasFactory<\Database\Factories\ProjectFileFactory> */
+    /** @use HasFactory<ProjectFileFactory> */
     use HasFactory;
 
     protected $fillable = [
@@ -22,6 +23,7 @@ class ProjectFile extends Model
     {
         return Attribute::make(get: fn (?string $value) => $value ?? '');
     }
+
     /** @return BelongsTo<Project, $this> */
     public function project(): BelongsTo
     {

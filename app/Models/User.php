@@ -44,6 +44,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
     /** @return HasMany<Project, $this> */
     public function projects(): HasMany
     {
