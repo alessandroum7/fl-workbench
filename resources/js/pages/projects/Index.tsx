@@ -89,7 +89,12 @@ export default function Index({ projects }: Props) {
                                 projects.map((project) => (
                                     <TableRow key={project.id}>
                                         <TableCell className="font-medium">
-                                            {project.name}
+                                            <Link
+                                                href={`/projects/${project.id}`}
+                                                className="text-indigo-600 hover:underline"
+                                            >
+                                                {project.name}
+                                            </Link>
                                         </TableCell>
                                         <TableCell className="max-w-xs truncate text-muted-foreground">
                                             {project.description ?? '—'}

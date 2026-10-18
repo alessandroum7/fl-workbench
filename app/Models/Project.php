@@ -12,7 +12,7 @@ class Project extends Model
 {
     /** @use HasFactory<ProjectFactory> */
     use HasFactory;
-
+    public const MAX_FILES = 20;
     protected $fillable = [
         'user_id',
         'source_project_id',

@@ -23,7 +23,6 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'name' => [ 'required', 'string', 'max:150',
-                'regex:/^[A-Za-z0-9_.-]+$/',
                 Rule::unique('projects', 'name')->where('user_id', $this->user()->id),
                 ],
             'description' => ['nullable', 'string', 'max:1000'],
