@@ -9,6 +9,7 @@ use App\Models\Project;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
+use App\Models\ProjectFile;
 class ProjectController extends Controller
 {
     public function index(Request $request) {
@@ -57,6 +58,10 @@ class ProjectController extends Controller
         return Inertia::render('projects/Show', [
             'project' => $project->only(['id', 'name', 'description', 'build_config']),
             'files' => $project->files()->orderBy('name')->get(['id', 'name', 'content']),
+            'limits' => [
+                'max_files' => Project::MAX_FILES,
+                'max_content' => ProjectFile::MAX_CONTENT_LENGTH,
+            ],
         ]);
     }
 }
